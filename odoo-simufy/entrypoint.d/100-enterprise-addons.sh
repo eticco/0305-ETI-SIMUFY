@@ -5,7 +5,7 @@ set -e
 # ===== Configuración =====
 REPO_URL="git@github.com:odoo/enterprise.git"
 BRANCH="17.0"          # <-- pon aquí la rama donde está el commit
-COMMIT="829beb9"       # commit deseado (abreviado o completo)
+COMMIT="0a6bc37"       # commit deseado (abreviado o completo)
 DEST_DIR="/opt/odoo/enterprise_addons"
 CONFIG_FILE="/etc/ssh/ssh_config.d/github.conf"
 PRIVATE_KEY="/opt/odoo/certificates/github_rsa"
