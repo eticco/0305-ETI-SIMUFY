@@ -1,0 +1,8 @@
+/.history/
+/enterprise_addons/
+/unconfirmed_third_party_addons/
+*.py[co]
+__pycache__/
+/conf/
+.backups
+/config/

@@ -1,0 +1,42 @@
+{
+    "git@github.com:adminsimufy/simufy.git": {
+        "latest": [
+            "common_connector_library",
+            "delivery_custom",
+            "delivery_dhl_parcel",
+            "delivery_gls_asm",
+            "delivery_package_number",
+            "delivery_price_method",
+            "delivery_state",
+            "mts_shopify_ept_fixer",
+            "oct_account_ext",
+            "oct_brand_pricelist",
+            "oct_cex_conector",
+            "oct_deduct_down_payments",
+            "oct_delivery_dhl",
+            "oct_delivery_seur",
+            "oct_delivery_ups",
+            "oct_documents_payroll_access",
+            "oct_ebay_custom",
+            "oct_hide_ws_links",
+            "oct_invoice_mirakl",
+            "oct_mail_restrict",
+            "oct_package_bulk",
+            "oct_payment_method_partner",
+            "oct_prices_from",
+            "oct_publish_product_by_category",
+            "oct_purchase_documents",
+            "oct_queue_monitoring",
+            "oct_report_management",
+            "oct_sales_report_extended",
+            "oct_seur_return",
+            "oct_shopify_ept_ext",
+            "oct_time_stage_ticket",
+            "product_brand",
+            "queue_job_allow_dev_exec",
+            "sh_employee_attendance_report",
+            "sh_employee_attendance",
+            "shopify_ept"
+        ]
+    }
+}

@@ -1,0 +1,63 @@
+{
+	"folders": [
+		{
+			"path": "..//odoo-simufy"
+		},
+		{
+			"path": "..//..//odoo_base//odoo17"
+		}
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"activityBar.activeBackground": "#c97539",
+			"activityBar.activeBorder": "#422c74",
+			"activityBar.background": "#c97539",
+			"activityBar.foreground": "#FFFFFF",
+			"activityBar.inactiveForeground": "#000000",
+			"activityBarBadge.background": "#5D4037",
+			"activityBarBadge.foreground": "#FFFFFF",
+			"statusBar.background": "#c97539",
+			"statusBar.foreground": "#000000",
+			"statusBarItem.hoverBackground": "#FF5722",
+			"titleBar.activeBackground": "#c97539",
+			"titleBar.activeForeground": "#000000",
+			"titleBar.inactiveBackground": "#c97539",
+			"titleBar.inactiveForeground": "#FFFFFF",
+			"sash.hoverBorder": "#FF5722",
+			"statusBarItem.remoteBackground": "#c97539",
+			"statusBarItem.remoteForeground": "#000000",
+			"commandCenter.border": "#e7e7e799"
+		},
+		"pylint.args": [
+			"--load-plugins=pylint_odoo",
+			"--max-line-length=88",
+			"--line-length=88"
+		],
+		"editor.defaultFoldingRangeProvider": "ms-python.black-formatter",
+    	"editor.defaultFormatter": "ms-python.black-formatter",
+		"python.linting.pycodestyleEnabled": true,
+
+		// Para evitar errores en los import de Odoo y poder autocompletar
+		"python.analysis.extraPaths": [
+		"..//..//odoo_base//odoo14",
+		"..//..//odoo_base//odoo14/addons",
+		"..//..//odoo_base//odoo14/odoo/addons"
+		],
+		// Para poder autocompletar con clases de Odoo
+		"python.autoComplete.extraPaths": [
+		"..//..//odoo_base//odoo14",
+		"..//..//odoo_base//odoo14/addons",
+		"..//..//odoo_base//odoo14/odoo/addons"
+		],
+		// Guardado y formateo automático de ficheros .py
+		"editor.formatOnSave": true,
+		"files.autoSaveDelay": 500,
+		// Excluir los pyc del workspace
+		"files.exclude": {
+			"**/*.pyc": true
+		},
+		"[python]": {
+			"editor.defaultFormatter": "ms-python.black-formatter"
+		}
+	}
+}
