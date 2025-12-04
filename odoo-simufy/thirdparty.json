@@ -1,1 +1,7 @@
-{ }
+{ 
+    "https://github.com/OCA/stock-logistics-workflow.git": {
+        "933822d": [
+            "stock_picking_back2draft"
+        ]
+    }
+}
