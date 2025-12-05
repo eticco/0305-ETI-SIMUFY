@@ -3,5 +3,27 @@
         "933822d": [
             "stock_picking_back2draft"
         ]
+    },
+    "https://github.com/OCA/l10n-spain.git": {
+        "8af041d": [
+            "l10n_es_aeat",
+            "l10n_es_aeat_sii_oca"
+        ]
+    },
+    "https://github.com/OCA/account-financial-reporting.git": {
+        "89df921": [
+            "account_tax_balance"
+        ]
+    },
+    "https://github.com/OCA/server-ux.git": {
+        "2b908a8": [
+            "date_range",
+            "server_action_mass_edit"
+        ]
+    },
+    "https://github.com/OCA/account-invoicing.git": {
+        "e2fe451": [
+            "account_invoice_refund_link"
+        ]
     }
 }
