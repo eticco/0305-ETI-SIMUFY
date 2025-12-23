@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="ir.config_parameter" id="searates_container_searates_endpoint">
+            <field name="key">searates_container.searates_endpoint</field>
+            <field name="value">https://tracking.searates.com</field>
+        </record>
+
+        <record model="ir.config_parameter" id="searates_container_searates_api_key">
+            <field name="key">searates_container.searates_api_key</field>
+            <field name="value">XXXXX-XXXX</field>
+        </record>
+
+        <record id="searates_sync_cron" model="ir.cron">
+            <field name="name">Searates Sync</field>
+            <field name="model_id" ref="model_container_import"/>
+            <field name="state">code</field>
+            <field name="code">model.cron_action_update_searates()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">3</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+        </record>
+    </data>
+</odoo>
