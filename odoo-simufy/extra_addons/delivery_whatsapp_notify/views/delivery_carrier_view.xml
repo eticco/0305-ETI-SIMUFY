@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 Tecnativa - David Vidal
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_delivery_carrier_form" model="ir.ui.view">
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position='inside'>
+                <page
+                    string="Notificación"
+                >
+                    <group>
+                        <group>
+                            <field name="whatsapp_template_id" />
+                            <field name="whatsapp_notify_state_ids" widget="many2many_tags" options="{'no_create': True}" /> 
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+           
+        </field>
+    </record>
+</odoo>

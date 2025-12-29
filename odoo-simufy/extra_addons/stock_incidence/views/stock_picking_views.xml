@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="stock_incidence_view_picking_form_inh" model="ir.ui.view">
+        <field name="name">stock.incidence.view.picking.form.inh</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='other_infos']" position="inside">
+                <div class="oe_inline">
+                    <label for='incidence_id'></label>
+                </div>
+                <div class="oe_inline">
+                    <field name="incidence_id" nolabel="1" readonly="1" />
+                    <button string="Eliminar"
+                        name="action_delete_incidence" 
+                        icon="fa-times text-danger"
+                        type="object"
+                        invisible="not incidence_id"/>
+                </div>
+                <field name="incidence_date" readonly="1"/>
+            </xpath>
+
+            <xpath expr="//header" position="inside">
+                <button name="%(stock_incidence.stock_incidence_wizard_action_view)d" string="Registrar Incidencia" type="action" class="oe_highlight" context="{'default_picking_id':id}"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

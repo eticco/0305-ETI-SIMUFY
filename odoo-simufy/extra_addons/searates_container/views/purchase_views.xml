@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="searates_container_view_purchase_form_inh" model="ir.ui.view">
+        <field name="name">searates.container.view.purchase.form.inh</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='purchase_delivery_invoice']" position="after">
+
+                <page string="Info. Importación" name="purchase_import_information">
+
+                    <group>
+                        <group>
+                            <field name="incoterm_id" />
+                            <field name="import_dest_state_id" />
+                            <field name="freight_forwarder_partner_id" />
+                            <field name="freight_forwarder_dispatch" />
+                            <field name="freight_forwarder_quotation" />
+                        </group>
+
+                        <group string="Tiempo de tránsito">
+
+                            <field name="etd_date" />
+                            <field name="port_eta_date" />
+                            <field name="warehouse_eta_date" />
+
+                        </group>
+
+                    </group>
+
+                    <group>
+
+                        <group string="Destino">
+
+                            <field name="destiny_warehouse_id" />
+                            <field name="destiny_transportation_id" />
+                            <field name="in_customs_warehouse" />
+
+                        </group>
+
+                        <group string="Cotizaciones">
+
+                            <field name="freight_forwarder" />
+                            <field name="destiny_transportation" />
+
+                        </group>
+
+                    </group>
+
+                    <group string="Documentación">
+
+                        <group string="Origen">
+
+                            <field name="is_origin_proforma" />
+                            <field name="is_origin_invoice" />
+                            <field name="is_origin_delivery_note" />
+                            <field name="is_origin_bl" />
+                            <field name="is_origin_telex" />
+                            <field name="plastic_certificate" />
+
+                        </group>
+
+                        <group string="Destino">
+
+                            <field name="is_destiny_dua" />
+                            <field name="is_destiny_dua_number" invisible="not is_destiny_dua" />
+                            <field name="is_destiny_tax_invoice" />
+                            <field name="is_destiny_forwarder_invoice" />
+                            <field name="is_destiny_external_transport_invoice" />
+
+                        </group>
+
+                    </group>
+
+                    <group string="Contenedores">
+
+                        <field name="container_import_ids" nolabel="1" colspan="2" >
+                            <tree editable="top">
+                                <field name="ref" />
+                                <field name="sealine_name" />
+                                <field name="vessel_name" />
+                                <field name="status" />
+                                <field name="updated_at" />
+                            </tree>
+                        </field>
+
+                    </group>
+
+                    <group string="Observaciones">
+
+                        <field name="import_observations" nolabel="1" colspan="2" />
+
+                    </group>
+
+                </page>
+
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_purchase_order_filter" model="ir.ui.view">
+        <field name="name">purchase.view.order.filter</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="container_import_ids" string="Referencia contenedores" filter_domain="[('container_import_ids.ref', 'ilike', self)]" />
+            </xpath>
+
+            <xpath expr="//search" position="inside">
+                <filter name="in_customs_warehouse" string="Mercancía en depósito aduanero" domain="[('in_customs_warehouse', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_view_search" model="ir.ui.view">
+        <field name="name">purchase.view.order.search</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_view_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="is_destiny_dua_number" string="Número DUA" filter_domain="[('is_destiny_dua_number', '=', self)]" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,6 @@
+suds-py3
+phonenumbers
+openupgradelib
+pycountry
+zeep
+requests

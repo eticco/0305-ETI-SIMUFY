@@ -1,0 +1,62 @@
+version: '2'
+services:
+  db:
+    image: postgres:${PG_VERSION}
+    labels:
+      - "io.portainer.accesscontrol.teams=ENTORNOS_INTEGRACION"
+    container_name: ${COMPOSE_PROJECT_NAME}-db
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWD}
+      - POSTGRES_USER=odoo
+      - POSTGRES_DB=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    restart: ${RESTART}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  odoo:
+    image: dockhub.eticco.es/eticco/adoo:${VERSION}.${REVISION}
+    labels:
+      - "io.portainer.accesscontrol.teams=ENTORNOS_INTEGRACION"
+    container_name: ${COMPOSE_PROJECT_NAME}-odoo
+    depends_on:
+      - db
+    ports:
+      - "${DEBUG_PORT}:9678"
+      - "${LONGPOLLING_PORT}:8072"
+      - "${HTTP_PORT}:8069"
+    tty: true
+    command: -- --limit-time-real=100000 --limit-time-cpu=50000
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=${DB_PASSWD}
+      - CLIENT=${COMPOSE_PROJECT_NAME}
+      - VERSION=${VERSION}
+      - ENV=${ENV}
+      - DEBUG=${DEBUG}
+      - SET_ENTERPRISE_DATE_EXPIRATION=${SET_ENTERPRISE_DATE_EXPIRATION}
+    restart: ${RESTART}
+    volumes:
+      - odoo_data:/opt/odoo/odoo_data
+      - odoo_custom_data:/opt/odoo/custom_data
+      - ./entrypoint.d/100-enterprise-addons.sh:/entrypoint.d/100-enterprise-addons.sh
+      - ./entrypoint.d/101-project-addons.sh:/entrypoint.d/101-project-addons.sh
+      - ./extra_addons:/opt/odoo/extra_addons
+      - ./third_party_addons:/opt/odoo/third_party_addons
+      - ./unconfirmed_third_party_addons:/opt/odoo/unconfirmed_third_party_addons
+      - ./enterprise_addons:/opt/odoo/enterprise_addons
+      - ./custom-requirements.txt:/opt/odoo/custom-requirements.txt
+      - ./thirdparty.json:/opt/odoo/thirdparty.json
+      - ./project-addons.json:/opt/odoo/project-addons.json
+      - ./conf/github_rsa:/opt/odoo/certificates/github_rsa
+
+volumes:
+  db_data:
+    name: ${COMPOSE_PROJECT_NAME}-db_data
+  odoo_data:
+    name: ${COMPOSE_PROJECT_NAME}-odoo_data
+  odoo_custom_data:
+    name: ${COMPOSE_PROJECT_NAME}-odoo_custom_data

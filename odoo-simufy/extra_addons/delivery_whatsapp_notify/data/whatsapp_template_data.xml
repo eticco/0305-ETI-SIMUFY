@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<odoo noupdate="1">
+    <record id="whatsapp_template_delivery_state" model="whatsapp.template" forcecreate="0">
+        <field name="name">Notificación de Estado de Entrega</field>
+        <field name="template_name">delivery_state</field>
+        <field name="lang_code">es</field>
+        <field name="template_type">utility</field>
+        <field name="header_type">none</field>
+        <field name="phone_field">partner_id.mobile</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="body">Hola 👋
+Te informamos sobre una actualización en tu envío asociado al pedido nº {{1}}, gestionado por {{2}}.
+
+Estado del envío: {{3}}
+
+Te avisaremos si el transportista proporciona nuevas actualizaciones.
+        </field>
+        <field name="variable_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {
+                'name': '{{1}}',
+                'demo_value': 'SHP_#0001',
+                'line_type': 'body',
+                'field_type': 'field',
+                'field_name': 'sale_id.name'
+            }),
+            (0, 0, {
+                'name': '{{2}}',
+                'demo_value': 'GLS EXPRESS',
+                'line_type': 'body',
+                'field_type': 'field',
+                'field_name': 'carrier_id.name'
+            }),
+            (0, 0, {
+                'name': '{{3}}',
+                'demo_value': 'Envío registrado en el transportista',
+                'line_type': 'body',
+                'field_type': 'field',
+                'field_name': 'delivery_state'
+            })
+        ]" />
+    </record>
+</odoo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="searates_container_view_container_import_form_inh" model="ir.ui.view">
+        <field name="name">searates.container.view.container.import.form.inh</field>
+        <field name="model">container.import</field>
+        <field name="arch" type="xml">
+
+            <form string="Contenedor">
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="ref"/>
+                            <field name="sealine_name"/>
+                            <field name="status"/>
+                            <field name="updated_at"/>
+                            <field name="vessel_name"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="container_history_ids">
+                            <tree string="Historial de Contenedores">
+                                <field name="date"/>
+                                <field name="location"/>
+                                <field name="description"/>
+                            </tree>
+                        </field>
+                    </group>
+
+                    <notebook>
+                        <page string="Respuesta Json" groups="base.group_no_one">
+                            <field name="json_return" widget="html"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+</odoo>

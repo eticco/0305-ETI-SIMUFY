@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo noupdate="1">
+
+    <record id="whatsapp_notify_delivery_state_shipping_recorded_in_carrier" model="whatsapp.notify.state">
+        <field name="name">shipping_recorded_in_carrier</field>
+    </record>
+
+    <record id="whatsapp_notify_delivery_state_in_transit" model="whatsapp.notify.state">
+        <field name="name">in_transit</field>
+    </record>
+
+    <record id="whatsapp_notify_delivery_state_canceled_shipment" model="whatsapp.notify.state">
+        <field name="name">canceled_shipment</field>
+    </record>
+
+    <record id="whatsapp_notify_delivery_state_incident" model="whatsapp.notify.state">
+        <field name="name">incident</field>
+    </record>
+
+    <record id="whatsapp_notify_delivery_state_customer_delivered" model="whatsapp.notify.state">
+        <field name="name">customer_delivered</field>
+    </record>
+
+    <record id="whatsapp_notify_delivery_state_warehouse_delivered" model="whatsapp.notify.state">
+        <field name="name">warehouse_delivered</field>
+    </record>
+
+    <record id="whatsapp_notify_delivery_state_no_update" model="whatsapp.notify.state">
+        <field name="name">no_update</field>
+    </record>
+
+</odoo>
