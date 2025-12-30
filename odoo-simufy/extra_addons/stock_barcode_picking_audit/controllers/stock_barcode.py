@@ -10,10 +10,8 @@ _logger = logging.getLogger(__name__)
 
 class StockBarcodeController(StockBarcodeController):
 
-    @http.route("/stock_barcode/scan_from_main_menu", type="json", auth="user")
-    def main_menu(self, barcode, **kw):
-        context = dict(request.env.context)
-        context.update(from_barcode=True)
-        request.env.context = context
+    @http.route("/stock_barcode/get_barcode_data", type="json", auth="user")
+    def get_barcode_data(self, model, res_id):
+        request.session.prepare_from_barcode = True
 
-        return super().main_menu(barcode, **kw)
+        return super().get_barcode_data(model, res_id)
