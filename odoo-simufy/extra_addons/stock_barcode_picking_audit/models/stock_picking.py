@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from odoo import api, models, fields
-from odoo.osv import expression
 from odoo.http import request
 import logging
 
@@ -15,7 +14,7 @@ class StockPicking(models.Model):
     )
 
     def write(self, vals):
-        if self.env.context.get("from_barcode", False):
+        if request.session.get("prepare_from_barcode", False):
             vals.update(user_prepared_by_ids=[(4, self.env.uid)])
 
         return super(StockPicking, self).write(vals)
