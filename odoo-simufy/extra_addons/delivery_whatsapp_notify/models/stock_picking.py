@@ -34,7 +34,7 @@ class StockPicking(models.Model):
 
     @api.model
     def cron_update_delivery_states(self):
-        pickings = self.search(
+        pickings = self.env["stock.picking"].search(
             [
                 ("state", "=", "done"),
                 (
