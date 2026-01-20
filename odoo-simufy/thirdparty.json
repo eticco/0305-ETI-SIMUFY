@@ -25,5 +25,11 @@
         "e2fe451": [
             "account_invoice_refund_link"
         ]
+    },
+    "git@repo.eticco.es:odoo/stock.git": {
+        "fe1373a6": [
+            "stock_client_order_ref",
+            "stock_picking_split"
+        ]
     }
 }
