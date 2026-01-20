@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_picking_split_wizard,access.stock.picking.split.wizard,stock_picking_split.model_stock_picking_split_wizard,base.group_user,1,1,1,1
+access_split_picking_data,access.split.picking.data,stock_picking_split.model_split_picking_data,base.group_user,1,1,1,1
+access_new_picking_move_line,access.new.picking.move.line,stock_picking_split.model_new_picking_move_line,base.group_user,1,1,1,1
+access_split_picking_move_line,access.split.picking.move.line,stock_picking_split.model_split_picking_move_line,base.group_user,1,1,1,1
+

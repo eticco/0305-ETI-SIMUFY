@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_delivery_document" inherit_id="stock.report_delivery_document" priority="90">
+
+        <!--        <xpath expr="//div[hasclass('row','justify-content-end')]" position="attributes">-->
+        <!--            <attribute name="t-if">o.client_order_ref</attribute>-->
+        <!--        </xpath>-->
+
+        <xpath expr="//div[hasclass('row')]" position="attributes">
+            <attribute name="t-if">o.client_order_ref</attribute>
+        </xpath>
+
+        <!--        <xpath expr="//div[hasclass('row','justify-content-end')]/div/p" position="attributes">-->
+        <!--            <attribute name="t-field">o.client_order_ref</attribute>-->
+        <!--        </xpath>-->
+
+        <xpath expr="//div[hasclass('row')]/div/p" position="attributes">
+            <attribute name="t-field">o.client_order_ref</attribute>
+        </xpath>
+    </template>
+</odoo>

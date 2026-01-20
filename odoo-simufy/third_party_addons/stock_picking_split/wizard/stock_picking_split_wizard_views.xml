@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="dspsolar_stock_picking_split_wizard_view" model="ir.ui.view">
+        <field name="name">stock.picking.split.wizard.view</field>
+        <field name="model">stock.picking.split.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="state" invisible="1" />
+                <field name="picking_id" invisible="1"/>
+                <field name="ref_base" invisible="1"/>
+
+                <div class="alert alert-info text-center" role="status" invisible="state != 'step1'" >
+                    El albarán precargado se corresponde con el albarán desde el que se lanza la acción.
+                </div>
+
+                <group string="Nuevos Albaranes" invisible="state != 'step1'">
+
+                    <field name="picking_data_ids">
+                        <tree editable="bottom">
+                            <field name="picking_id" column_invisible="1" />
+                            <field name="scheduled_date" />
+                            <field name="ref" force_save="1" required="not picking_id" readonly="picking_id"/>
+                        </tree>
+                    </field>
+
+                </group>
+
+
+                <div class="alert alert-info text-center" role="status" invisible="state != 'step2'">
+                    Asegurese de dejar las cantidades de las lineas origen en 0 o menos!
+                </div>
+
+                <group string="Lineas nuevas" invisible="state != 'step2'">
+
+                    <field name="new_move_ids">
+                        <tree editable="bottom">
+                            <field name="allowed_product_ids" column_invisible="1" />
+                            <field name="picking_data_id" domain="[('wiz_id','=',context.get('active_id'))]"/>
+                            <field name="product_id" domain="[('id','in',allowed_product_ids)]"/>
+                            <field name="product_uom_category_id" column_invisible="1" />
+                            <field name="product_uom" />
+                            <field name="qty"/>
+                        </tree>
+                    </field>
+                </group>
+                <group string="Lineas Origen" invisible="state != 'step2'">
+                    <field name="move_ids">
+                        <tree decoration-success="state == 'done'" decoration-danger="state == 'pending'" create="false" delete="false">
+                            <field name="state" column_invisible="1" />
+                            <field name="product_id" readonly="1" force_save="1"/>
+                            <field name="product_uom" readonly="1" force_save="1"/>
+                            <field name="qty" readonly="1" force_save="1"/>
+                        </tree>
+                    </field>
+                </group>
+
+                <footer>
+                    <button string="Siguiente" name="next_step" type="object" class="oe_highlight" invisible="state != 'step1'"/>
+                    <button string="Atrás" name="return_back_step" type="object" class="oe_highlight" invisible="state != 'step2'"/>
+                    <button string="Crear Albaranes" name="create_pickings" type="object" class="oe_highlight" invisible="state != 'step2'"/>
+                    <button string="Cancelar" class="btn btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="stock_picking_split_wizard_action_view" model="ir.actions.act_window">
+        <field name="name">Crear Multiples Albaranes</field>
+        <field name="res_model">stock.picking.split.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="dspsolar_split_pciking_view_picking_form_inh" model="ir.ui.view">
+        <field name="name">dspsolar.split.pciking.view.picking.form.inh</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(stock_picking_split.stock_picking_split_wizard_action_view)d" type="action" string="Dividir" invisible="state in ('done','cancel')" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
