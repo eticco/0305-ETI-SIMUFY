@@ -42,8 +42,9 @@ class StockPicking(models.Model):
                     "not in",
                     ["customer_delivered", "canceled_shipment", "no_update"],
                 ),
-                ("delivery_type", "not in", [False, "fixed", "base_one_rule"]),
-                ("delivery_type.whatsapp_template_id", "!=", False),
+                ("delivery_type", "not in", ["fixed", "base_one_rule"]),
+                ("carrier_id", "!=", False),
+                ("carrier_id.whatsapp_template_id", "!=", False),
             ]
         )
 
