@@ -7,7 +7,14 @@
     "https://github.com/OCA/l10n-spain.git": {
         "8af041d": [
             "l10n_es_aeat",
-            "l10n_es_aeat_sii_oca"
+            "l10n_es_aeat_sii_oca",
+            "l10n_es_aeat_sii_oss"
+        ]
+    },
+    "https://github.com/OCA/account-fiscal-rule.git": {
+        "1529666": [
+            "account_fiscal_position_partner_type",
+            "l10n_eu_oss_oca"
         ]
     },
     "https://github.com/OCA/account-financial-reporting.git": {
