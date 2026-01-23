@@ -18,10 +18,15 @@ class SaleJournalRule(models.Model):
         domain=[("type", "=", "sale")],
     )
 
-    is_intracommunity = fields.Boolean(
-        string="Intracomunitario",
-        help="Indica si esta regla es para operaciones intracomunitarias.",
-        default=False,
+    region = fields.Selection(
+        [
+            ("local", "España"),
+            ("eu", "Intracomunitario"),
+            ("external", "Extracomunitario"),
+        ],
+        string="Región",
+        required=True,
+        default="local",
     )
 
     min_amount = fields.Float(
@@ -49,7 +54,7 @@ class SaleJournalRule(models.Model):
             overlapping_rules = self.search(
                 [
                     ("workflow_id", "=", record.workflow_id.id),
-                    ("is_intracommunity", "=", record.is_intracommunity),
+                    ("region", "=", record.region),
                     ("id", "!=", record.id),
                     "|",
                     "&",

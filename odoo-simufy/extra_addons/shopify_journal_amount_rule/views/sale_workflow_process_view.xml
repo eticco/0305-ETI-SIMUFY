@@ -11,7 +11,7 @@
                     <tree editable="bottom">
                         <field name="min_amount" />
                         <field name="max_amount" />
-                        <field name="is_intracommunity" />
+                        <field name="region" />
                         <field name="journal_id" />
                     </tree>
                 </field>
