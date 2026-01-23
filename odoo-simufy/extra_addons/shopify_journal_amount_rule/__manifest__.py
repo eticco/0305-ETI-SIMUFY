@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Account Journal Amount Rule",
+    "name": "Shopify Journal Amount Rule",
     "description": """
         Módulo para definir reglas basadas en montos para diarios contables.
     """,
