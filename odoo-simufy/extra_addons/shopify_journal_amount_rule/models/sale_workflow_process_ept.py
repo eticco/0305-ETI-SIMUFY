@@ -10,9 +10,12 @@ class SaleWorkflowProcessEpt(models.Model):
         string="Reglas de Diario por Cantidad",
     )
 
-    def get_journal_for_amount(self, amount):
+    def get_journal_for_amount(self, amount, country_id):
         self.ensure_one()
         for rule in self.journal_amount_rule_ids:
-            if rule.min_amount <= amount <= rule.max_amount:
+            if (
+                rule.min_amount <= amount <= rule.max_amount
+                and rule.is_intracommunity == country_id.intrastat
+            ):
                 return rule.journal_id
         return None
