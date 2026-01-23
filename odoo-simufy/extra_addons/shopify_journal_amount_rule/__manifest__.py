@@ -4,7 +4,7 @@
     "description": """
         Módulo para definir reglas basadas en montos para diarios contables.
     """,
-    "depends": ["common_connector_library"],
+    "depends": ["common_connector_library", "account_intrastat"],
     "data": [
         "security/ir.model.access.csv",
         "views/sale_workflow_process_view.xml",
