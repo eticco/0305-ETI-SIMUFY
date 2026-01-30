@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="eticco_account_due_list_extension_move_line_tree_view" model="ir.ui.view">
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account_due_list.view_payments_tree" />
+        <field name="arch" type="xml">
+            <tree position="inside">
+                <button name="action_read_due_line" type="object" string="Configurar" class="float-right btn-secondary"/>
+            </tree>
+
+            <tree position="attributes">
+                <attribute name="editable">bottom</attribute>
+            </tree>
+
+             <field name="reconciled" position="before">
+                <field name="blocked" optional="show" />
+            </field>
+        </field>
+    </record>
+
+    <record id="eticco_account_due_list_extension_payment_mode_tree_view" model="ir.ui.view">
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account_due_list_payment_mode.view_payments_mode_tree" />
+        <field name="arch" type="xml">
+
+            <field name="payment_mode_id" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </field>
+
+        </field>
+    </record>
+
+    <record id="eticco_account_due_list_extension_move_line_form_view" model="ir.ui.view">
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_move_line_form" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Comentarios" name="due_list_comments">
+                    <group string="Comentarios">
+                        <field name="aging_comments" nolabel="1" />
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="eticco_account_due_list_payment_partner_move_line_form_view" model="ir.ui.view">
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account_payment_partner.view_move_line_form" />
+        <field name="arch" type="xml">
+            <field name="payment_mode_id" position="attributes">
+                <attribute name="readonly">0</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>
