@@ -46,5 +46,27 @@
             "stock_client_order_ref",
             "stock_picking_split"
         ]
+    },
+    "https://github.com/OCA/account-payment.git": {
+        "4069a82": [
+            "account_due_list",
+            "account_due_list_payment_mode"
+        ]
+    },
+    "https://github.com/eticco/account-payment.git": {
+        "03de5f9": [
+            "account_due_list_aging_comment"
+        ]
+    },
+    "https://github.com/OCA/bank-payment.git": {
+        "9136e36": [
+            "account_payment_partner",
+            "account_payment_mode"
+        ]
+    },
+    "git@repo.eticco.es:odoo/account-payment.git": {
+        "b0262ec3": [
+            "eticco_account_due_list_aging_comment_extension"
+        ]
     }
 }
