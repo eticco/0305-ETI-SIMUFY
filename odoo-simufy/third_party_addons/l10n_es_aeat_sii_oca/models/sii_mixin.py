@@ -637,7 +637,7 @@ class SiiMixin(models.AbstractModel):
             if "1117" in (self.aeat_send_error or ""):
                 return {
                     "IDOtro": {
-                        "CodigoPais": country_code,
+                        "CodigoPais": country_code if country_code != "EL" else "GR",
                         "IDType": "07",
                         "ID": identifier,
                     }
@@ -647,12 +647,16 @@ class SiiMixin(models.AbstractModel):
                     return {"NIF": identifier}
                 return {
                     "IDOtro": {
-                        "CodigoPais": country_code,
+                        "CodigoPais": country_code if country_code != "EL" else "GR",
                         "IDType": identifier_type,
-                        "ID": country_code + identifier
-                        if self._aeat_get_partner()._map_aeat_country_code(country_code)
-                        in self._aeat_get_partner()._get_aeat_europe_codes()
-                        else identifier,
+                        "ID": (
+                            country_code + identifier
+                            if self._aeat_get_partner()._map_aeat_country_code(
+                                country_code
+                            )
+                            in self._aeat_get_partner()._get_aeat_europe_codes()
+                            else identifier
+                        ),
                     },
                 }
         elif gen_type == 2:
@@ -665,7 +669,7 @@ class SiiMixin(models.AbstractModel):
                 identifier_type = "06"
             return {
                 "IDOtro": {
-                    "CodigoPais": country_code,
+                    "CodigoPais": country_code if country_code != "EL" else "GR",
                     "IDType": identifier_type,
                     "ID": identifier,
                 },
@@ -832,9 +836,9 @@ class SiiMixin(models.AbstractModel):
                     and not document.sii_account_registration_date
                     and mapping_key[:2] == "in"
                 ):
-                    doc_vals[
-                        "sii_account_registration_date"
-                    ] = document._get_account_registration_date()
+                    doc_vals["sii_account_registration_date"] = (
+                        document._get_account_registration_date()
+                    )
                 doc_vals["sii_return"] = res
                 send_error = False
                 if res_line["CodigoErrorRegistro"]:
